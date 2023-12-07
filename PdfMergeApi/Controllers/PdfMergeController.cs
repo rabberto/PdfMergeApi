@@ -22,7 +22,7 @@ public class PdfMergeController : ControllerBase
     public IActionResult MergePdf([FromBody] Contract contract)
     {
         if (contract == null)
-            return BadRequest("Forneça pelo menos duas strings base64 para combinar.");
+            return BadRequest("Send at least two base64 strings to match.");
 
         if (contract.Documents.Length == 1)
             Ok(contract.Documents);
@@ -58,7 +58,7 @@ public class PdfMergeController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, "Ocorreu um erro ao combinar e converter os documentos: " + ex.Message);
+            return StatusCode(500, "Failed to combine and convert documents: " + ex.Message);
         }
     }
 
